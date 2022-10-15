@@ -1,0 +1,137 @@
+.input{
+    height: 25px;
+    margin-right: 20px;
+    padding-left: 5px;
+    border-radius: 10px;
+    border: 0.2px solid rgb(164, 164, 164);
+}
+.searchInput{
+    height: 30px;
+}
+form input{
+    margin-bottom: 10px;
+}
+.input:active{
+    border: 0.2px solid rgb(91, 91, 91) ;
+}
+.btn{
+    width: 100px;
+    height: 35px;
+    padding: 0 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgb(164, 164, 164);
+
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+.btn_export{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 0.2px solid gray;
+}
+.btn_add{
+    background-color: blue;
+    color: #fff;
+    border: none;
+}
+.btn_edit{
+    border: none;
+    background-color: rgb(31, 159, 31);
+    color: #fff;
+    width: auto !important;
+    padding: 2px 4px !important;
+}
+.btn_delete{
+    border: none;
+    background-color: rgb(240, 54, 7);
+    color: #fff;
+    width: auto !important;
+    padding: 2px 4px !important;
+    margin-left: 10px;
+}
+.btn_edit:hover{
+    box-shadow: 2px 2px 2px green;
+}
+.btn_delete:hover{
+    box-shadow: 2px 2px 2px red;
+}
+.btn_add:hover{
+    box-shadow: 2px 2px 2px rgb(120, 120, 120);
+}
+.btn_export:hover{
+    box-shadow: 2px 2px 2px rgb(120, 120, 120);
+}
+
+.tableHeader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.rdt_TableHeadRow{
+    background-color: rgb(217, 217, 217) !important;
+    color: rgb(109, 108, 108);
+}
+.rdt_TableHeader{
+    border-radius: 10px 10px 0 0;
+
+}
+.rdt_Pagination{
+    border-radius: 0 0 10px 10px;
+}
+
+.AddForm{
+    position: fixed;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid gray;
+    box-shadow: 2px 2px 2px gray;
+    border-radius: 5px;
+    width: 350px;
+    height: 350px;
+}
+.AddForm form{
+    width: 80%;
+    margin: 0 auto !important;
+}
+.AddForm input{
+    width: 100%;
+}
+.formBody{
+    top: 0;
+    left: 0%;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+}
+.formButtons{
+    width: 100%;
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (max-width: 600px) {
+    .tableHeader{
+        flex-direction: column;
+    }
+    .searchAndAdd{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    header{
+        width: 100%;
+        padding: 4px 15px !important;
+    }
+    
+}

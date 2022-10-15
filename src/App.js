@@ -1,11 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
-
+import DataTables from './components/Table/DataTables';
 function App() {
+ 
   return (
-    <div className="App">
-     Start
-    </div>
+    <>
+      <div className="dataTables">
+        <DataTables />
+      </div>
+    </>
+
   );
 }
 
