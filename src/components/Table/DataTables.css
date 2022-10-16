@@ -113,12 +113,22 @@ form input{
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(3px);
+    z-index: 1;
+
 }
 .formButtons{
     width: 100%;
     margin: 20px auto 0;
     display: flex;
     justify-content: space-between;
+}
+.editText{
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+.btnAdd:active{
+    background-color: green;
+    box-shadow: 2px 2px 2px green;
 }
 @media screen and (max-width: 600px) {
     .tableHeader{
