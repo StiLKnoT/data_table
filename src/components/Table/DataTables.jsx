@@ -6,6 +6,8 @@ import "./DataTables.css";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IosShareIcon from "@mui/icons-material/IosShare";
+import Form from "../form/Form";
+import TableHeader from "./TableHeader";
 
 function DataTables() {
   const [dataUsers, setDataUsers] = useState([]);
@@ -41,8 +43,6 @@ function DataTables() {
     setName((value = ""));
   };
 
-
-
   const getDataUsers = async () => {
     try {
       const response = await axios.get(dataApi);
@@ -66,13 +66,11 @@ function DataTables() {
       setPostUser(resp.data);
       alert("User added");
       clear();
-
     } catch (error) {
-      alert("User don't added");
       clear();
     }
   };
-
+  
   const getEditUser = async (e, id) => {
     e.preventDefault();
     try {
@@ -131,67 +129,24 @@ function DataTables() {
             <EditIcon />
           </button>
           {editUser ? (
-            <div className="formBody">
-              <div className="AddForm">
-                <span className="editText">Edit User</span>
-
-                <form onSubmit={getEditUser}>
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="User *"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                  />
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="Email *"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="Role *"
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
-                    required
-                  />
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="Plane *"
-                    value={plane}
-                    onChange={(e) => setPlane(e.target.value)}
-                    required
-                  />
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="Status *"
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                    required
-                  />
-                  <div className="formButtons">
-                    <button
-                      className="btn btn_add btnClearAdd"
-                      type="button"
-                      style={{ backgroundColor: "red" }}
-                      onClick={() => setEditUser(!editUser)}
-                    >
-                      Close
-                    </button>
-                    <button className="btn btn_add" type="submit">
-                      Save
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
+            <Form
+            userManipulation ="Edit User"
+            getPostUser={getEditUser}
+            getUser={(e) => setName(e.target.value)}
+            getEmail={(e) => setEmail(e.target.value)}
+            getRole={(e) => setRole(e.target.value)}
+            getPlane={(e) => setPlane(e.target.value)}
+            getStatus={(e) => setStatus(e.target.value)}
+            getSetAddUsers={() => setEditUser(!editUser)}
+  
+            valueName={name}
+            valueEmail={email}
+            valueRole={role}
+            valuePlane={plane}
+            valueStatus={status}
+            CLose="Close"
+            formSend="Save"
+          />
           ) : null}
           <button className="btn btn_delete" onClick={() => userDelete(row.id)}>
             <DeleteIcon />
@@ -214,95 +169,35 @@ function DataTables() {
           highlightOnHover
           subHeader
           subHeaderComponent={
-            <div className="tableHeader">
-              <button
-                className="btn btn_export"
-                onClick={() => alert("Export")}
-              >
-                <IosShareIcon />
-                Export
-              </button>
-              <div className="searchAndAdd">
-                <input
-                  type="text"
-                  placeholder="Search Users"
-                  className="input searchInput"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <button
-                  className="btn btn_add"
-                  onClick={() => setAddUser(!addUser)}
-                >
-                  Add User
-                </button>
-              </div>
-            </div>
+            <TableHeader
+              clickExport={() => alert("Export")}
+              searchInput={(e) => setSearch(e.target.value)}
+              exportIcon= {<IosShareIcon />}
+              searchValue={search}
+              btnAddTop={() => setAddUser(!addUser)}
+            />
           }
         />
       </div>
       {addUser ? (
-        <div className="formBody">
-          <div className="AddForm">
-            <span className="editText">Add User</span>
+        <Form
+          userManipulation ="Add User"
+          getPostUser={getPostUser}
+          getUser={(e) => setName(e.target.value)}
+          getEmail={(e) => setEmail(e.target.value)}
+          getRole={(e) => setRole(e.target.value)}
+          getPlane={(e) => setPlane(e.target.value)}
+          getStatus={(e) => setStatus(e.target.value)}
+          getSetAddUsers={() => setAddUser(!addUser)}
 
-            <form onSubmit={getPostUser}>
-              <input
-                className="input"
-                type="text"
-                placeholder="User *"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <input
-                className="input"
-                type="text"
-                placeholder="Email *"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <input
-                className="input"
-                type="text"
-                placeholder="Role *"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                required
-              />
-              <input
-                className="input"
-                type="text"
-                placeholder="Plane *"
-                value={plane}
-                onChange={(e) => setPlane(e.target.value)}
-                required
-              />
-              <input
-                className="input"
-                type="text"
-                placeholder="Status *"
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-                required
-              />
-              <div className="formButtons">
-                <button
-                  className="btn btn_add btnClearAdd"
-                  type="button"
-                  style={{ backgroundColor: "red" }}
-                  onClick={() => setAddUser(!addUser)}
-                >
-                  CLose
-                </button>
-                <button className="btn btn_add btnAdd" type="submit">
-                  Add
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+          valueName={name}
+          valueEmail={email}
+          valueRole={role}
+          valuePlane={plane}
+          valueStatus={status}
+          CLose="Close"
+          formSend="Add"
+        />
       ) : null}
     </>
   );
